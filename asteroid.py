@@ -7,11 +7,6 @@ from logger import log_event
 class Asteroid(CircleShape):
     def __init__(self, x, y, radius):
         super().__init__(x, y, radius)
-<<<<<<< HEAD
-
-    def draw(self, screen):
-        pygame.draw.circle(screen, "white", self.position, self.radius, LINE_WIDTH)
-=======
         base_image = pygame.image.load("/home/loganb/Documents/Workspace/Asteroid_game/Asteroid-Game-main/Assets/Asteroids/Asteroid_1.png").convert_alpha()
         size = int(self.radius * 2)
         self.image = pygame.transform.scale(base_image, (size, size))
@@ -21,7 +16,6 @@ class Asteroid(CircleShape):
         rotated = pygame.transform.rotate(self.image, self.rotation_angle)
         rect = rotated.get_rect(center=(self.position.x, self.position.y))
         screen.blit(rotated, rect)
->>>>>>> 1c38e60 (added ship/asteroid sprites and a new background)
 
     def update(self, dt):
         self.position += (self.velocity * dt)
