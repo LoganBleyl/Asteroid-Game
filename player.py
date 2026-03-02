@@ -1,6 +1,6 @@
 import pygame
 from circleshape import CircleShape
-from constants import PLAYER_RADIUS, LINE_WIDTH, PLAYER_TURN_SPEED, PLAYER_SPEED, SHOT_RADIUS, PLAYER_SHOOT_SPEED, PLAYER_SHOOT_COOLDOWN_SECONDS
+from constants import PLAYER_RADIUS, LINE_WIDTH, PLAYER_TURN_SPEED, PLAYER_SPEED, SHOT_RADIUS, PLAYER_SHOOT_SPEED, PLAYER_SHOOT_COOLDOWN_SECONDS, ASSETS_DIR
 from shot import Shot
 
 class Player(CircleShape):
@@ -8,16 +8,16 @@ class Player(CircleShape):
         super().__init__(x, y, PLAYER_RADIUS)
         self.rotation = 0
         self.shoot_cd_timer = 0
+        
         # allow caller to supply a pre-loaded/scaled image; otherwise use default
         if image is None:
-            self.original_image = pygame.image.load(
-                "/home/loganb/Documents/Workspace/Asteroid_game/Asteroid-Game-main/Assets/Ships/Spaceship_12.png"
-            ).convert_alpha()
+            self.original_image = pygame.image.load(str(ASSETS_DIR / "Ships" / "Spaceship_12.png")).convert_alpha()
             self.original_image = pygame.transform.scale(self.original_image, (50, 50))  # default size
         else:
             self.original_image = image
         self.image = self.original_image
         self.rect = self.image.get_rect(center=(self.position.x, self.position.y))
+    
     # in the Player class
     def triangle(self):
         forward = pygame.Vector2(0, 1).rotate(self.rotation)

@@ -2,7 +2,7 @@
 import constants
 import pygame
 import sys
-from constants import SCREEN_WIDTH, SCREEN_HEIGHT
+from constants import SCREEN_WIDTH, SCREEN_HEIGHT, ASSETS_DIR
 from logger import log_state, log_event
 from player import Player
 from asteroid import Asteroid
@@ -16,15 +16,15 @@ def main():
     # initialize display before converting images
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
-    # load and scale the background now that display is ready
-    background = pygame.image.load("/home/loganb/Documents/Workspace/Asteroid_game/Asteroid-Game-main/Assets/Backgrounds/Blue_Nebula_05-1024x1024.png").convert()
+    # load and scale the background now that display is ready (project-relative path)
+    background = pygame.image.load(str(ASSETS_DIR / "Backgrounds" / "Blue_Nebula_05-1024x1024.png")).convert()
     background = pygame.transform.scale(background, (SCREEN_WIDTH, SCREEN_HEIGHT))
 
     # helper for loading other assets (if needed)
     def load_all():
         return {
-            "ship": pygame.image.load("/home/loganb/Documents/Workspace/Asteroid_game/Asteroid-Game-main/Assets/Ships/Spaceship_12.png").convert_alpha(),
-            "asteroid": pygame.image.load("/home/loganb/Documents/Workspace/Asteroid_game/Asteroid-Game-main/Assets/Asteroids/Asteroid_01.png").convert_alpha(),
+            "ship": pygame.image.load(str(ASSETS_DIR / "Ships" / "Spaceship_12.png")).convert_alpha(),
+            "asteroid": pygame.image.load(str(ASSETS_DIR / "Asteroids" / "Asteroid_01.png")).convert_alpha(),
             "background": background,
         }
 
@@ -45,7 +45,7 @@ def main():
     asteroid_field = AsteroidField()
     # once the player exists, let the field know so it can avoid spawning nearby
     
-    player_image = pygame.image.load("/home/loganb/Documents/Workspace/Asteroid_game/Asteroid-Game-main/Assets/Ships/Spaceship_12.png").convert_alpha()
+    player_image = pygame.image.load(str(ASSETS_DIR / "Ships" / "Spaceship_12.png")).convert_alpha()
     player_image = pygame.transform.scale(player_image, (constants.PLAYER_RADIUS * 2, constants.PLAYER_RADIUS * 2))
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, player_image)
     # inform asteroid field about the player so it can keep a safe distance

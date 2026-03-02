@@ -1,3 +1,8 @@
+from pathlib import Path
+
+# project-local assets directory
+ASSETS_DIR = Path(__file__).parent / "Assets"
+
 SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
 PLAYER_RADIUS = 20
