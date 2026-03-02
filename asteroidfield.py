@@ -28,9 +28,17 @@ class AsteroidField(pygame.sprite.Sprite):
         ],
     ]
 
+<<<<<<< HEAD
     def __init__(self):
         pygame.sprite.Sprite.__init__(self, self.containers)
         self.spawn_timer = 0.0
+=======
+    def __init__(self, player=None):
+        # player reference used to avoid spawning too close to them
+        pygame.sprite.Sprite.__init__(self, self.containers)
+        self.spawn_timer = 0.0
+        self.player = player
+>>>>>>> 1c38e60 (added ship/asteroid sprites and a new background)
 
     def spawn(self, radius, position, velocity):
         asteroid = Asteroid(position.x, position.y, radius)
@@ -41,6 +49,7 @@ class AsteroidField(pygame.sprite.Sprite):
         if self.spawn_timer > ASTEROID_SPAWN_RATE_SECONDS:
             self.spawn_timer = 0
 
+<<<<<<< HEAD
             # spawn a new asteroid at a random edge
             edge = random.choice(self.edges)
             speed = random.randint(40, 100)
@@ -49,3 +58,22 @@ class AsteroidField(pygame.sprite.Sprite):
             position = edge[1](random.uniform(0, 1))
             kind = random.randint(1, ASTEROID_KINDS)
             self.spawn(ASTEROID_MIN_RADIUS * kind, position, velocity)
+=======
+            # spawn a new asteroid at a random edge, avoid the player if possible
+            for _ in range(5):
+                edge = random.choice(self.edges)
+                speed = random.randint(40, 100)
+                velocity = edge[0] * speed
+                velocity = velocity.rotate(random.randint(-30, 30))
+                position = edge[1](random.uniform(0, 1))
+                kind = random.randint(1, ASTEROID_KINDS)
+                radius = ASTEROID_MIN_RADIUS * kind
+
+                if self.player is not None:
+                    dist = position.distance_to(self.player.position)
+                    buffer = 50
+                    if dist < radius + self.player.radius + buffer:
+                        continue
+                self.spawn(radius, position, velocity)
+                break
+>>>>>>> 1c38e60 (added ship/asteroid sprites and a new background)

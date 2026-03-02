@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {"timestamp": "21:07:28.343", "elapsed_s": 10, "frame": 625, "type": "asteroid_shot"}
 {"timestamp": "21:07:28.344", "elapsed_s": 10, "frame": 625, "type": "asteroid_split"}
 {"timestamp": "21:07:28.603", "elapsed_s": 10, "frame": 641, "type": "asteroid_shot"}
@@ -48,3 +49,10 @@
 {"timestamp": "21:07:44.694", "elapsed_s": 26, "frame": 961, "type": "asteroid_split"}
 {"timestamp": "21:07:45.128", "elapsed_s": 27, "frame": 961, "type": "asteroid_shot"}
 {"timestamp": "21:07:45.241", "elapsed_s": 27, "frame": 961, "type": "asteroid_shot"}
+=======
+{"timestamp": "01:32:10.082", "elapsed_s": 4, "frame": 241, "type": "asteroid_shot"}
+{"timestamp": "01:32:10.082", "elapsed_s": 4, "frame": 241, "type": "asteroid_split"}
+{"timestamp": "01:32:12.153", "elapsed_s": 6, "frame": 366, "type": "asteroid_shot"}
+{"timestamp": "01:32:12.154", "elapsed_s": 6, "frame": 366, "type": "asteroid_split"}
+{"timestamp": "01:32:12.982", "elapsed_s": 7, "frame": 415, "type": "player_hit"}
+>>>>>>> 1c38e60 (added ship/asteroid sprites and a new background)
